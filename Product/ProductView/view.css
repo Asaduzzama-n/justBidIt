@@ -1,0 +1,112 @@
+
+
+
+
+.productViewContainer{
+    /* display: flex; */
+    /* align-items: center; */
+    background-color: #EDEDED;
+    /* height: 600px; */
+    border-radius: 10px;
+    padding: 20px;
+}
+.infoContainer{
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: start;
+    margin-right: 10px;
+    /* border-right: 5px solid #4649ff; */
+
+}
+.imgContainer{
+    width: 60%;
+    margin-right: 30px;
+}
+.imgContainer img{
+    width: 100%;
+    margin-right: 10px;
+
+}
+.desc{
+    width: 90%;
+    height: 100px;
+    overflow: hidden;
+
+}
+.descriptionContainer{
+    width: 35%;
+    color: #142F43;
+    /* margin-left: 30px; */
+    
+}
+.descriptionContainer  button{
+    border: none;
+    background-color: #EDEDED;
+    /* padding: 0px 10px; */
+    width: 200px;
+    /* border-bottom: 5px solid #142F43; */
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    /* border-radius: 5px; */
+}
+.descriptionContainer button:hover{
+    background-color: #4649ff;
+    color: white;
+    border-radius: 10px;
+}
+.biddingFormContainer{
+    width: 100%;
+    /* margin: auto; */
+   background-color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+    /* border-left: 10px solid #4649ff; */
+    margin-left: 10px;
+    padding: 10px;
+} 
+#biddingForm{
+    margin-top: 5px;
+    width: 95%;
+   border-radius: 10px;
+   margin-left: 10px;
+   padding: 20px;
+   background-color: #EDEDED;
+}
+
+input[type = number]{
+    outline: none;
+    width: 60%;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    
+}
+#bidButton{
+    background-color: #4649ff;
+    color: white;
+    /* width: 40%; */
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+#biddingForm{
+    display: none;
+    
+}
+
+
+
+
+
+
+
+
+

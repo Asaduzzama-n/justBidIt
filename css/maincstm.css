@@ -1,0 +1,6 @@
+.productsContainer{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    display: flex;
+    background-color: #0d6dfd3f;
+}

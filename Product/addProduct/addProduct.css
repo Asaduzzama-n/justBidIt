@@ -1,0 +1,33 @@
+.customSize{
+    width: 70%;
+    background-color: #EDEDED;
+    padding: 10px;
+    margin: auto!important;
+    border-radius: 10px;
+}
+
+input{
+    width: 100%;
+    height: 35px;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+}
+textarea{
+    width: 100%;
+    border: none;
+    padding: 10px;
+    height: auto;
+    border-radius: 10px;
+    
+}
+input[type='datetime-local']{
+   border: none;
+}
+.submitBtn{
+    background-color: #4649FF;
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+}
