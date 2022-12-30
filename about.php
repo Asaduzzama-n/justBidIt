@@ -9,7 +9,7 @@ include './include/DB.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="style9.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>more about AuctionBits</title>
+    <title>more about JustBidIt</title>
 
     <link rel="stylesheet" href="./css/nav.css">
     <!-- bootstrap and fontawesome link -->
@@ -60,8 +60,8 @@ include './include/DB.php';
                                 Features
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Blog & Feedback</a></li>
-                                <li><a class="dropdown-item" href="#">About</a></li>
+                                <li><a class="dropdown-item" href="./logout.php">Logout</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">About</a></li> -->
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -85,25 +85,25 @@ include './include/DB.php';
   
   <section class="introduction container my-5">
     <div class="starcontainer">
-      <h2>About AuctionBits</h2>
+      <h2>About JustBidIt</h2>
       <i class="fa fa-star fa-2x"></i>
       <hr class="star"></hr>
     </div>
-      <p>AuctionBits is an online based bidding system for bidding, selling, shipping and trading antique or precious product. Here users can post their product which they interested in selling.  </p>
+      <p>JustBidIt is an online based bidding system for bidding, selling, shipping and trading antique or precious product. Here users can post their product which they interested in selling.  </p>
   </section>
   
   <section class="location container my-5">
-      <h1>What is Auction Bits?</h1>
-      <p>AuctionBits is a online bidding selling platform</p>
+      <h1>What is JustBidIt?</h1>
+      <p>JustBidIt is a online bidding selling platform</p>
   </section>
   
   <section class="questions container my-5">
-      <h1 class="my-3">More About AuctionBits </h1>
-        <h2>What is motivation of Auctionbits?</h2>
+      <h1 class="my-3">More About JustBidIt </h1>
+        <h2>What is motivation of JustBidIt?</h2>
          <p>Going to different auction in different places at a time is impossible. It is costly and inefficient. In our county we can see that there is no online auction system. The people of our county are not familiar with online auction system. It is our high chance to introduce our system to our people. People of our county don’t need to go physically to the auction system. Our system will make an impact to the people of our county and they will eventually adapt out system.</p>
         <br><h2>What is the objective?</h2>
          <p>In this system sellers can create their post about their product and admin will accept the valid and authentic product. Bidders can bid the product and if they win the bid then they can ship the product. There is a proper messaging system between bidders and sellers. It will help them to communicate with each other. There is a blog section in our system where the bidders or sellers can post any product blog description. Rating, review and comment section is also present in our system</p>
-         <br><h2>System study of AuctionBits</h2>
+         <br><h2>System study of JustBidIt</h2>
          <p>We gathered information from benchmark products and online resources to conduct the system study. We mainly focused on external sources of information as ours is a new company without an existing user base. From these sources we have fixed our feature list which is described in the Functional Requirements section.</p>
   </section>
 

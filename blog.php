@@ -68,7 +68,7 @@ $identity = $_SESSION['Identity'];
                                 Features
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./logout.php">Logout</a></li>
+                                <li><a class="dropdown-item" href="#">Blog & Feedback</a></li>
                                 <li><a class="dropdown-item" href="#">About</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -127,13 +127,13 @@ $identity = $_SESSION['Identity'];
 
 
                         $id = $row['Id'];
-                        $sql42 = "SELECT * FROM `winner` WHERE p_id = '$id' ORDER BY amount DESC LIMIT 1;";
+                        $sql42 = "SELECT bidder_mail as user FROM winner WHERE p_id=$id";
                         $result42 = mysqli_query($conn, $sql42);
 
                         if ($result42->num_rows > 0) {
                             $row42 = mysqli_fetch_assoc($result42);
-                            $userMail = $row42['bidder_mail'];
-                            $sql45 = "UPDATE product SET winner = '$userMail' WHERE Id = '$id'";
+                            $user = $row42['user'];
+                            $sql45 = "UPDATE product SET winner = '$user' WHERE Id = '$id'";
                             $result45 = mysqli_query($conn, $sql45);
                         }
 
@@ -167,21 +167,7 @@ $identity = $_SESSION['Identity'];
                             </div>
                             <div class="row">
                                 <div class="col text-center my-2">
-
-                                    <?php
-                                    $sql25 = "SELECT AVG(user_rating) as rating FROM review_table WHERE p_id = '$id';";
-                                    $result25 = mysqli_query($conn, $sql25);
-                                    if ($result25) {
-                                        $row25 = $result25->fetch_assoc();
-                                    ?>
-                                        <Strong><img class="mx-2" src="./Images/star (1).png" width="25px" alt=""> <?php echo $row25["rating"]; ?></Strong>
-                                    <? } else {
-
-                                    ?>
-
-                                    <?php }
-                                    ?>
-
+                                    <Strong><?php echo $row["rating"]; ?></Strong>
                                 </div>
                             </div>
 
@@ -230,110 +216,6 @@ $identity = $_SESSION['Identity'];
     <!-- finished auction part! -->
 
 
-    <section class="container mt-5">
-        <div class="row">
-            <div class="col">
-                <h2>Recently Auctioned</h2>
-            </div>
-        </div>
-
-        <div class="row my-5">
-
-            <?php
-            $conn = new mysqli('localhost', 'root', '', 'auctionbits');
-            $sql = "SELECT * FROM product WHERE a_status = 0";
-            $result = $conn->query($sql);
-            ?>
-
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $pic = "Images/Product/";
-            ?>
-
-                    <div class="col-sm-4 mt-5">
-                        <div class="row productImg">
-                            <div class="col">
-                                <img src="<?php echo $pic . $row['Image'] ?>" alt="">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-center my-2">
-                                <h4>Name : <?php echo $row['Name'] ?></h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-center my-2">
-                                <h5> <?php echo $row['Description'] ?></h5>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-center my-2">
-                                <Strong> <?php echo $row['Category'] ?></Strong>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-center my-2">
-                            <?php
-                                    $sql25 = "SELECT AVG(user_rating) as rating FROM review_table WHERE p_id = '$id';";
-                                    $result25 = mysqli_query($conn, $sql25);
-                                    if ($result25) {
-                                        $row25 = $result25->fetch_assoc();
-                                    ?>
-                                        <Strong><img class="mx-2" src="./Images/star (1).png" width="25px" alt=""> <?php echo $row25["rating"]; ?></Strong>
-                                    <? } else {
-
-                                    ?>
-                                    <?php }
-                                    ?>
-                                <!-- <Strong><?php echo $row["rating"]; ?></Strong> -->
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-center my-2">
-                                <Strong>Ended: <?php echo $row["finishDt"]; ?></Strong>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-center my-2">
-
-                        <?php
-                            $winner = $row['winner'];
-                            $sql2 = "SELECT *  FROM bidder WHERE Email = '$winner'";
-                            $result2 = mysqli_query($conn, $sql2);
-                            if ($result2->num_rows > 0) {
-                                $row2 = mysqli_fetch_assoc($result2);
-                        ?>
-                                <div class="row">
-                                    <div class="col text-center my-2">
-                                        <Strong>Winner : <?php echo $row2['Username'] ?> </Strong>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col text-center my-2">
-
-                                    
-                                        <Strong>Sold at : <?php echo $row['Price'] ?> </Strong>
-                                    </div>
-                                </div>
-                            <?php } ?>
-
-                                <!-- <Strong>Winner: <?php echo $row["winner"]; ?></Strong> -->
-                            </div>
-                        </div>
-
-
-
-
-
-                    </div>
-
-                <?php } ?>
-
-            <?php } ?>
-
-        </div>
-    </section>
 
     <?php include './include/footer.php' ?>
 

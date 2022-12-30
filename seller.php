@@ -19,7 +19,7 @@ $identity = $_GET['identity'];
 
     <link rel="stylesheet" href="./css/nav.css">
     <!-- bootstrap and fontawesome link -->
-    <link rel="stylesheet" href="./css/bidder.css">
+    <link rel="stylesheet" href="./css/seller.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="./js/script.js"></script>
@@ -68,8 +68,8 @@ $identity = $_GET['identity'];
                                 Features
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Blog & Feedback</a></li>
-                                <li><a class="dropdown-item" href="#">About</a></li>
+                                <li><a class="dropdown-item" href="./logout.php">Logout</a></li>
+                                <li><a class="dropdown-item" href="./about.php">About</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -108,16 +108,32 @@ $identity = $_GET['identity'];
                 while ($row = $result->fetch_assoc()) {
                     $pic = "Images/Product/";
             ?>
-                    
-                    <div class="col-sm-4 mt-5">
-                        <div class="row productImg">
+
+                    <div class="col-sm-4 mt-5 product mx-2">
+
+                        <?php
+                        if ($row['a_status'] == 0) {
+                        ?>
+                            <div class="tumor finish">
+                                <strong >Finished</strong>
+                            </div>
+                        <?php } else {
+                        ?>
+                            <div class="tumor activeSt">
+                                <strong>Active</strong>
+                            </div>
+                        <?php }
+                        ?>
+
+
+                        <div class="row productImg ">
                             <div class="col">
                                 <img src="<?php echo $pic . $row['Image'] ?>" alt="">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col text-center my-2">
-                                <h4>Name : <?php echo $row['Name'] ?></h4>
+                                <h4><strong>Name : <?php echo $row['Name'] ?></strong></h4>
                             </div>
                         </div>
                         <div class="row">
@@ -139,6 +155,8 @@ $identity = $_GET['identity'];
 
                         <?php
                         $id = $row['Id'];
+                        $winner = $row['winner'];
+
                         $time = $row['finishDt'];
                         $time_obj = strtotime($time);
                         $now = new DateTime();
@@ -146,20 +164,28 @@ $identity = $_GET['identity'];
                         $now->getTimestamp();
 
                         if ($now->getTimestamp() > $time_obj) {
-
-                            $sql2 = "SELECT username as user, MAX(bid) as bid FROM winner WHERE Id=$id ";
-                            $row44 = mysqli_query($conn, $sql2);
-                            if ($row44->num_rows > 0) {
-                                $row3 = mysqli_fetch_assoc($row44);
+                            // echo $winner;
+                            $sql2 = "SELECT *  FROM bidder WHERE Email = '$winner'";
+                            $result2 = mysqli_query($conn, $sql2);
+                            if ($result2->num_rows > 0) {
+                                $row2 = mysqli_fetch_assoc($result2);
                         ?>
                                 <div class="row">
                                     <div class="col text-center my-2">
-                                        <Strong>Winner : <?php echo $row3['user'] ?> </Strong>
+                                        <Strong>Winner : <?php echo $row2['Username'] ?> </Strong>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col text-center my-2">
-                                        <Strong>Max Bid : <?php echo $row3['bid'] ?> ৳ </Strong>
+                                        <Strong>Winner Email : <?php echo $row2['Email'] ?></Strong>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col text-center my-2">
+                                        <a href="./Product/Edit/edit.php?id=<?php echo $row['Id'] ?>&username=<?php echo $username; ?>&identity=<?php echo $identity; ?>">
+                                            <button class="bidButtons">View Details</button>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -169,7 +195,7 @@ $identity = $_GET['identity'];
 
                             <div class="row">
                                 <div class="col text-center my-2">
-                                    <h5>Starting : <?php echo $row['startDt'] ?></h5>
+                                    <h5>Started : <?php echo $row['startDt'] ?></h5>
                                     <h5>Ending : <?php echo $row['finishDt'] ?></h5>
                                 </div>
                             </div>
@@ -182,12 +208,11 @@ $identity = $_GET['identity'];
                             </div>
                             <div class="row">
                                 <div class="col text-center my-2">
-                                    <a href="./Product/ProductView/view.php?id=<?php echo $row['Id'] ?>&username=<?php echo $username; ?>&identity=<?php echo $identity; ?>">
-                                    <button class="bidButtons">BID NOW</button>
+                                    <a href="./Product/Edit/edit.php?id=<?php echo $row['Id'] ?>&username=<?php echo $username; ?>&identity=<?php echo $identity; ?>">
+                                        <button class="bidButtons">View Details</button>
                                     </a>
                                 </div>
                             </div>
-
 
                         <?php  }
                         ?>
